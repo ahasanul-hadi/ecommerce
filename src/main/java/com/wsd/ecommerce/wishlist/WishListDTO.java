@@ -1,5 +1,6 @@
 package com.wsd.ecommerce.wishlist;
 
+import com.wsd.ecommerce.customer.CustomerDTO;
 import com.wsd.ecommerce.customer.CustomerEntity;
 import com.wsd.ecommerce.product.ProductEntity;
 import jakarta.persistence.Column;
@@ -15,7 +16,6 @@ import java.util.UUID;
 @Data
 public class WishListDTO {
     private UUID id;
-    private CustomerEntity customer;
     private ProductEntity product;
     private LocalDateTime dateTime;
 }

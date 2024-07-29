@@ -1,24 +1,22 @@
 package com.wsd.ecommerce.order;
 
-import com.wsd.ecommerce.customer.CustomerDTO;
-import com.wsd.ecommerce.customer.CustomerEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import org.springframework.format.annotation.DateTimeFormat;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class OrderDTO {
     private Long id;
-    private CustomerDTO user;
+    private List<OrderItemDTO> items= new ArrayList<>();
     private BigDecimal totalAmount;
+    private LocalDateTime orderTime;
 }

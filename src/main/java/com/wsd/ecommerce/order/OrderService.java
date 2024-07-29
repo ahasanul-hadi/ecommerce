@@ -58,14 +58,17 @@ public class OrderService {
         //save summary asynchronously
         salesService.saveSummary(orderItemEntities);
 
-       return mapToDTO(order);
+       return mapToDTO(order, orderItemEntities);
     }
 
-    private OrderDTO mapToDTO(OrderEntity entity){
-        return modelMapper.map(entity, OrderDTO.class);
+    private OrderDTO mapToDTO(OrderEntity entity, List<OrderItemEntity> items){
+        OrderDTO orderDTO= modelMapper.map(entity, OrderDTO.class);
+        if(items!=null && !items.isEmpty()){
+            for(OrderItemEntity item: items){
+                orderDTO.getItems().add(modelMapper.map(item, OrderItemDTO.class));
+            }
+        }
+        return orderDTO;
     }
 
-    private void saveSummary(List<OrderRequest> orderRequests){
-
-    }
 }
