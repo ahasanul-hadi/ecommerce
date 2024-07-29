@@ -1,0 +1,2 @@
+insert into customers (id,email,password,enabled,mobile) values(1,'ahasanul.hadi@gmail.com','$2a$10$JCt9OM7DEwVjffWkmcyyye73dI3g8VvgSkAiCtZxjAXJBma6aYVXC',true,'');
+insert into products (id,name,sku_code,price) values(1,'Product 1','SK-1',10.50);
