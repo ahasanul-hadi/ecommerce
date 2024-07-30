@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -21,12 +22,14 @@ import java.util.List;
 @Service
 @Data
 @RequiredArgsConstructor
+@Transactional
 public class OrderService {
     private final OrderItemRepository orderItemRepository;
     private final OrderRepository orderRepository;
     private final ProductRepository productRepository;
     private final ModelMapper modelMapper;
     private final SalesService salesService;
+
 
     public OrderDTO save(List<OrderRequest> orderRequests){
         BigDecimal total= new BigDecimal("0.00");

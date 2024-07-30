@@ -8,7 +8,9 @@ import java.math.BigDecimal;
 
 @Data
 @Entity
-@Table(name = "sales_summary")
+@Table(name = "sales_summary", indexes ={
+        @Index(name = "mulitIndex", columnList = "year, month, day")
+})
 public class SalesEntity extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,9 +29,9 @@ public class SalesEntity extends BaseEntity {
     private long productID;
 
     @Column(name = "quantity", nullable = false)
-    private long quantity;
+    private long quantity=0;
 
     @Column(name = "amount", nullable = false)
-    private BigDecimal amount;
+    private BigDecimal amount= new BigDecimal("0.00");
 
 }
