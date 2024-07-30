@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+
+
+  app:
+    build: .
+    image: ecommerce
+    ports:
+      - "8080:8080"
+    restart: always
+    depends_on:
+        - db # This service depends on mysql. Start that first.
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/wsd?useSSL=false
+      SPRING_DATASOURCE_USERNAME: wsd_user
+      SPRING_DATASOURCE_PASSWORD: Password123!
+
+
+  db:
+    image: mysql:8.3
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_DATABASE: wsd
+      MYSQL_USER: wsd_user
+      MYSQL_PASSWORD: Password123!
+      MYSQL_ROOT_PASSWORD: Password123!
+    ports:
+      - "3307:3306"
+
+
